@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Products from './Products'
 function App() {
   const [items, setItems] = useState([])
@@ -16,20 +16,17 @@ function App() {
     setSearch("")
 
   }
+  useEffect(()=>{
+    searchHandler()
+  },[])
   return (
-    <div>
+    <div >
       <div className='text-center'>
         <h2 className='recipe-title'>Food Recipe App</h2>
         <input type="text" onChange={(e) => { setSearch(e.target.value) }} value={search} className='input' /><br />
         <button className="searchBtn btn btn-primary" onClick={searchHandler}>Search</button>
       </div>
-      {items.length < 1 ?
-        <div class="d-flex justify-content-center">
-          <div class="spinner-border" role="status">
-            <span class="sr-only"></span>
-          </div>
-        </div>
-        : <Products items={items} />}
+      <Products items={items} />
     </div>
   );
 }

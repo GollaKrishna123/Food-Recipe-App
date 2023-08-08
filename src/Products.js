@@ -2,9 +2,10 @@ import React from 'react'
 
 const Products = ({ items }) => {
     return (
-        <div className='row'>
+        <div className="items-container" >
+            
             {items.map((item,index) =>
-                <div key={index} className='col-md-3'>
+                <div key={index}>
                     <div className='recipe-card text-center p-3'>
                     <img className='recipe-card-image' src={item.recipe.image} />
                     <h5 className='recipe-card-title'>{item.recipe.label}</h5>
@@ -13,7 +14,8 @@ const Products = ({ items }) => {
                     </div>
                 </div>
             )}
-        </div>
+            </div>
+        
     )
 }
 
